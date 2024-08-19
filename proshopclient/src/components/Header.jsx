@@ -5,9 +5,9 @@ import { LinkContainer } from "react-router-bootstrap";
 const Header = () => {
   return (
     <header>
-      <Navbar bg="dark" variant="dark" expand="md" collapseOnSelect>
+      <Navbar className="custom-navbar" expand="md" collapseOnSelect>
         <Container>
-          <Navbar.Brand>ProShop</Navbar.Brand>
+          <Navbar.Brand  className="custom-brand">ProShop</Navbar.Brand>
           <Navbar.Toggle area-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
