@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import { Productdata } from "../const/Productdata";
 import { Link } from "react-router-dom";
 import {
   Row,
@@ -11,16 +10,25 @@ import {
   ListGroupItem,
 } from "react-bootstrap";
 import Ratings from "./Ratings";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const ProductScreen = () => {
+  const [ productId, setParticularProductId] = useState({})
+
   const { id: ProductId } = useParams();
-  const productId = Productdata.find((product) => {
-    console.log(product._id, "productid is here", product);
-
-    return product._id == ProductId;
-  });
-  console.log(productId, "final product info");
-
+  useEffect(()=>{
+   const getParticular =()=>{
+  axios.get(`/api/products/${ProductId}`)
+  .then((res)=>{
+    console.log(res,"get particular response");
+    setParticularProductId(res.data)
+  })
+  .catch((err) =>{
+    console.log(err,"err in get particular response");
+  })}
+  getParticular();
+  },[])
   return (
     <>
       <Link className="btn btn-light my-3" to="/">
